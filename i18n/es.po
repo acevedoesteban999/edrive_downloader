@@ -1,0 +1,41 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* google_drive_downloader
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0+e-20250506\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-06-10 12:29+0000\n"
+"PO-Revision-Date: 2025-06-10 08:32\n"
+"Last-Translator: PoTranslator <acevedoesteban999@gmail.com>\n"
+"Language-Team: PoTranslator <acevedoesteban999@gmail.com>\n"
+"Language: es\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: PoTranslator\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+#. module: google_drive_downloader
+#. odoo-python
+#: code:addons/google_drive_downloader/models/drive.py:0
+msgid ""
+"The service account JSON needs to be configured in System Parameters. "
+"(service.account.credential.json)."
+msgstr ""
+"La cuenta de servicio JSON debe configurarse en los parámetros del sistema. "
+"(servicio.account.credential.json)."
+
+#. module: google_drive_downloader
+#: model:ir.model,name:google_drive_downloader.model_service_account
+msgid "Download service for Google Drive"
+msgstr "Descargar servicio para Google Drive"
+
+#. module: google_drive_downloader
+#. odoo-python
+#: code:addons/google_drive_downloader/models/drive.py:0
+msgid "Invalid URL."
+msgstr "URL no válida."
