@@ -16,7 +16,7 @@ class Drive(models.AbstractModel):
     
     @api.model
     def _initialize_drive_service(self):
-        """Inicializa el servicio de Google Drive con cuenta de servicio."""
+        """Initialize Google Drive service with service account."""
         config = self.env['ir.config_parameter'].sudo()
         service_account_info = config.get_param('service.account.credential.json')
 
@@ -32,7 +32,7 @@ class Drive(models.AbstractModel):
             service = build('drive', 'v3', credentials=creds)
             return service
         except Exception as e:
-            raise UserError(f"No se puedo inicializar Google Drive: {str(e)}")
+            raise UserError(f"Could not initialize Google Drive: {str(e)}")
 
     def download_file_from_url(self,url):
         try:
@@ -48,26 +48,26 @@ class Drive(models.AbstractModel):
 
     @api.model
     def download_file_from_drive(self, file_id , drive_service = None):
-        """Descarga un archivo de Drive usando su ID y lo devuelve como base64.
+        """Download a file from Drive using its ID and return it as base64.
         
         Args:
-            file_id (str): ID del archivo en Google Drive.
+            file_id (str): File ID in Google Drive.
             
         Returns:
-            tuple: (base64_data, mimetype) o None si hay error.
+            tuple: (base64_data, mimetype) or None if there's an error.
         """
         try:
             if not drive_service:
                 drive_service = self._initialize_drive_service()
             
-            # Obtener metadatos para el tipo MIME
+            # Get metadata for MIME type
             file_metadata = drive_service.files().get(
                 fileId=file_id,
                 fields='mimeType'
             ).execute()
             mimetype = file_metadata.get('mimeType', 'application/octet-stream')
 
-            # Descargar el contenido
+            # Download content
             request = drive_service.files().get_media(fileId=file_id)
             file_stream = io.BytesIO()
             downloader = MediaIoBaseDownload(file_stream, request)
@@ -81,18 +81,18 @@ class Drive(models.AbstractModel):
             return (base64_data, mimetype)
 
         except Exception as e:
-            raise UserError(f"Error al descargar archivo: {str(e)}")
+            raise UserError(f"Error downloading file: {str(e)}")
 
     @api.model
     def download_image_from_url(self, url,drive_service = None):
-        """Descarga una imagen desde una URL de Drive."""
+        """Download an image from a Drive URL."""
         drive_file_id = self._check_drive_and_extract_file_id_from_url(url)
         if not drive_file_id:
             return self.download_file_from_url(url)
         return self.download_file_from_drive(drive_file_id,drive_service)
 
     def _check_drive_and_extract_file_id_from_url(self, url):
-        """Extrae el ID del archivo de una URL de Drive."""
+        """Extract file ID from a Drive URL."""
         patterns = [
             r'/file/d/([^/]+)',
             r'id=([^&]+)',

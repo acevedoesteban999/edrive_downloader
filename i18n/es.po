@@ -24,7 +24,7 @@ msgstr ""
 #: code:addons/google_drive_downloader/models/drive.py:0
 msgid ""
 "The service account JSON needs to be configured in System Parameters. "
-"(service.account.credential.json)."
+"(edrive_downloader.credential.json)."
 msgstr ""
 "La cuenta de servicio JSON debe configurarse en los parámetros del sistema. "
 "(servicio.account.credential.json)."
