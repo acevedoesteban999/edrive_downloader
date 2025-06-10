@@ -19,7 +19,7 @@ Para integração do Google Drive, você precisa de uma conta de serviço com as
 
 Depois de ter o JSON, crie um parâmetro do sistema:
 
-> -   `service.account.credential.json`Contendo suas credenciais JSON Conteúdo.
+> `service.account.credential.json`Contendo suas credenciais JSON Conteúdo.
 
 ## Exemplos de uso
 
