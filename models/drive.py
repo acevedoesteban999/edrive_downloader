@@ -34,7 +34,7 @@ class Drive(models.AbstractModel):
         except Exception as e:
             raise UserError(f"Could not initialize Google Drive: {str(e)}")
 
-    def download_file_from_url(self,url):
+    def download_public_file_from_url(self,url):
         try:
             response = requests.get(url, timeout=1)
             response.raise_for_status()
@@ -84,11 +84,11 @@ class Drive(models.AbstractModel):
             raise UserError(f"Error downloading file: {str(e)}")
 
     @api.model
-    def download_image_from_url(self, url,drive_service = None):
+    def download_file_from_url(self, url,drive_service = None):
         """Download an image from a Drive URL."""
         drive_file_id = self._check_drive_and_extract_file_id_from_url(url)
         if not drive_file_id:
-            return self.download_file_from_url(url)
+            return self.download_public_file_from_url(url)
         return self.download_file_from_drive(drive_file_id,drive_service)
 
     def _check_drive_and_extract_file_id_from_url(self, url):
