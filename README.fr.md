@@ -19,7 +19,7 @@ Pour l'intégration Google Drive, vous avez besoin d'un compte de service avec J
 
 Une fois que vous avez le JSON, créez un paramètre système:
 
-> -   `service.account.credential.json`Contenant votre contenu JSON d'identification.
+> `service.account.credential.json`Contenant votre contenu JSON d'identification.
 
 ## Usage Examples
 
@@ -43,9 +43,9 @@ base64_data, mimetype = self.env['service.account'].download_file_from_url(url)
 
 ## Notes importantes
 
--   For private drives, it is necessary to include the service account as a reader to the file.
+-   Pour les disques privés, il est nécessaire d'inclure le compte de service en tant que lecteur dans le fichier.
 
--   The service account requires <https://www.googleapis.com/auth/drive.readonly>portée
+-   Le compte de service nécessite<https://www.googleapis.com/auth/drive.readonly>portée
 
 -   Toutes les méthodes renvoient un tuple de (base64_data, mimetype)
 
