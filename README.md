@@ -17,7 +17,7 @@ For Google Drive integration, you need a service account with JSON credentials. 
 [Follow this guide to get the JSON credentials](https://developers.google.com/workspace/guides/create-credentials)
 
 Once you have the JSON, create a system parameter:
-> - `service.account.credential.json`
+> `service.account.credential.json`
 Containing your credentials JSON content.
 
 
