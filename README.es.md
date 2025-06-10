@@ -15,11 +15,12 @@ Este modelo habilita las descargas de archivos de Google Drive o URL públicas.
 
 ## Funcionalidad
 
-Para la integración de Google Drive, necesita una cuenta de servicio con credenciales JSON. Si no sabe cómo obtener estos:[Siga esta guía para obtener las credenciales JSON](https://developers.google.com/workspace/guides/create-credentials)
+For Google Drive integration, you need a service account with JSON credentials. If you don't know how to obtain these:
+[Siga esta guía para obtener las credenciales JSON](https://developers.google.com/workspace/guides/create-credentials)
 
 Una vez que tenga el JSON, cree un parámetro del sistema:
 
-> -   `service.account.credential.json`Que contiene sus credenciales JSON Content.
+> `service.account.credential.json`Que contiene sus credenciales JSON Content.
 
 ## Ejemplos de uso
 
@@ -43,7 +44,7 @@ base64_data, mimetype = self.env['service.account'].download_file_from_url(url)
 
 ## Notas importantes
 
--   Para unidades privadas, es necesario incluir la cuenta de servicio como lector del archivo.
+-   For private drives, it is necessary to include the service account as a reader to the file.
 
 -   La cuenta de servicio requiere<https://www.googleapis.com/auth/drive.readonly>alcance
 
