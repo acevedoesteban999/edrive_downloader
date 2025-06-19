@@ -30,20 +30,20 @@ drive_service = self.env['service.account']._initialize_drive_service()
 
 # Download file by URL
 file_url = 'your_google_drive_file_url'
-base64_data, mimetype = self.env['service.account'].download_file_from_url(file_url,drive_service)
+base64_data, filename, mimetype = self.env['service.account'].download_file_from_url(file_url,drive_service)
 ```
 
 ### 2. Download from Public URL
 ```python
 url = 'https://example.com/file.pdf'
-base64_data, mimetype = self.env['service.account'].download_file_from_url(url)
+base64_data, filename, mimetype = self.env['service.account'].download_file_from_url(url)
 ```
 ## Important Notes
 - For private drives, it is necessary to include the service account as a reader to the file.
 
 - The service account requires https://www.googleapis.com/auth/drive.readonly scope
 
-- All methods return a tuple of (base64_data, mimetype)
+- All methods return a tuple of (base64_data, filename, mimetype)
 
 - Methods raise UserError on failure with descriptive messages
 

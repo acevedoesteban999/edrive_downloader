@@ -35,14 +35,28 @@ class Drive(models.AbstractModel):
             raise UserError(f"Could not initialize Google Drive: {str(e)}")
 
     def download_public_file_from_url(self,url):
+        def _get_filename(response:requests.Response,url:str):
+            filename = None
+            try:
+                content_disposition = response.headers.get('Content-Disposition')
+                if content_disposition:
+                    parts = content_disposition.split('filename=')
+                    if len(parts) > 1:
+                        filename = parts[1].strip('"\'')  
+                
+                if not filename:
+                    filename = url.split('/')[-1].split('?')[0]
+            except:
+                return filename
         try:
             response = requests.get(url, timeout=1)
             response.raise_for_status()
             mimetype = response.headers.get('Content-Type')
             if not mimetype:
                 mimetype = mimetypes.guess_type(url)[0] or 'application/octet-stream'
-            base64_data = base64.b64encode(response.content)
-            return (base64_data,mimetype)
+            filename = _get_filename(response)
+            base64_data = base64.b64encode(response.content,url)
+            return (base64_data,filename,mimetype)
         except:
             raise UserError(_("Invalid URL."))
 
@@ -78,7 +92,7 @@ class Drive(models.AbstractModel):
 
             file_stream.seek(0)
             base64_data = base64.b64encode(file_stream.read())
-            return (base64_data, mimetype)
+            return (base64_data,False, mimetype)
 
         except Exception as e:
             raise UserError(f"Error downloading file: {str(e)}")
