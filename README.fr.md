@@ -11,7 +11,7 @@
 
 ## But
 
-This model enables file downloads from Google Drive or public URLs.
+Ce modèle permet les téléchargements de fichiers depuis Google Drive ou URL publics.
 
 ## Fonctionnalité
 
