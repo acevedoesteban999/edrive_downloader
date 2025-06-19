@@ -43,10 +43,10 @@ base64_data, filename, mimetype = self.env['service.account'].download_file_from
 
 ## Notas importantes
 
--   Para unidades particulares, é necessário incluir a conta de serviço como leitor no arquivo.
+-   For private drives, it is necessary to include the service account as a reader to the file.
 
 -   A conta de serviço exige<https://www.googleapis.com/auth/drive.readonly>escopo
 
 -   Todos os métodos retornam uma tupla de (base64_data, nome do arquivo, mimetype)
 
--   Methods raise UserError on failure with descriptive messages
+-   Métodos Aumente o UserRor sobre falha com mensagens descritivas
