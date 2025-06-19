@@ -11,7 +11,7 @@
 
 ## But
 
-Ce modèle permet les téléchargements de fichiers depuis Google Drive ou URL publics.
+This model enables file downloads from Google Drive or public URLs.
 
 ## Fonctionnalité
 
@@ -31,14 +31,14 @@ drive_service = self.env['service.account']._initialize_drive_service()
 
 # Download file by URL
 file_url = 'your_google_drive_file_url'
-base64_data, mimetype = self.env['service.account'].download_file_from_url(file_url,drive_service)
+base64_data, filename, mimetype = self.env['service.account'].download_file_from_url(file_url,drive_service)
 ```
 
 ### 2. Télécharger à partir de l'URL publique
 
 ```python
 url = 'https://example.com/file.pdf'
-base64_data, mimetype = self.env['service.account'].download_file_from_url(url)
+base64_data, filename, mimetype = self.env['service.account'].download_file_from_url(url)
 ```
 
 ## Notes importantes
@@ -47,6 +47,6 @@ base64_data, mimetype = self.env['service.account'].download_file_from_url(url)
 
 -   Le compte de service nécessite<https://www.googleapis.com/auth/drive.readonly>portée
 
--   Toutes les méthodes renvoient un tuple de (base64_data, mimetype)
+-   Toutes les méthodes renvoient un tuple de (base64_data, nom de fichier, mimetype)
 
 -   Les méthodes augmentent la doctorat de l'utilisateur en échec avec des messages descriptifs
