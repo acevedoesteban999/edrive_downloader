@@ -31,14 +31,14 @@ drive_service = self.env['service.account']._initialize_drive_service()
 
 # Download file by URL
 file_url = 'your_google_drive_file_url'
-base64_data, mimetype = self.env['service.account'].download_file_from_url(file_url,drive_service)
+base64_data, filename, mimetype = self.env['service.account'].download_file_from_url(file_url,drive_service)
 ```
 
 ### 2. Download do URL público
 
 ```python
 url = 'https://example.com/file.pdf'
-base64_data, mimetype = self.env['service.account'].download_file_from_url(url)
+base64_data, filename, mimetype = self.env['service.account'].download_file_from_url(url)
 ```
 
 ## Notas importantes
@@ -47,6 +47,6 @@ base64_data, mimetype = self.env['service.account'].download_file_from_url(url)
 
 -   A conta de serviço exige<https://www.googleapis.com/auth/drive.readonly>escopo
 
--   Todos os métodos retornam uma tupla de (Base64_Data, Mimetype)
+-   Todos os métodos retornam uma tupla de (base64_data, nome do arquivo, mimetype)
 
--   Métodos Aumente o UserRor sobre falha com mensagens descritivas
+-   Methods raise UserError on failure with descriptive messages
