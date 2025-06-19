@@ -54,8 +54,8 @@ class Drive(models.AbstractModel):
             mimetype = response.headers.get('Content-Type')
             if not mimetype:
                 mimetype = mimetypes.guess_type(url)[0] or 'application/octet-stream'
-            filename = _get_filename(response)
-            base64_data = base64.b64encode(response.content,url)
+            filename = _get_filename(response,url)
+            base64_data = base64.b64encode(response.content)
             return (base64_data,filename,mimetype)
         except:
             raise UserError(_("Invalid URL."))
